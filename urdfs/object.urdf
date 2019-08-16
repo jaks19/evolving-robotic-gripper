@@ -1,0 +1,26 @@
+<robot name="block">
+  
+  <link name="block">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+       <mass value="1" />
+       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="./tmp/elephant.obj" name="mesh" />
+      </geometry>
+       <material name="red">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision name="block_collision">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="./tmp/elephant.obj" name="mesh" />
+      </geometry>
+    </collision>
+  </link>
+
+</robot>
