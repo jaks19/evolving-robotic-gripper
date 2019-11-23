@@ -130,10 +130,10 @@ def calibrate_mesh_and_save(src, sim, urdf_file_orig):
 
     # IMPORTANT: DO OPS IN SAME ORDER As WHEN THEY WERE COMPUTED 
     # AS COMPUTATION WAS CUMULATIVE IN _get_stable_pos_orn_scale_object_from_pybullet
-    mesh = utils.get_positioned_and_oriented_mesh(mesh=mesh, translation=stable_pos, orn_euler_rad=stable_orn_euler_rad)
+    mesh = get_positioned_and_oriented_mesh(mesh=mesh, translation=stable_pos, orn_euler_rad=stable_orn_euler_rad)
 
     # Scaling cares about which pt is the origin (center of rotation), so make sure done on proper mesh
-    mesh = utils.scale_like_pybullet(mesh, scaling_factor=stable_scale)
+    mesh = scale_like_pybullet(mesh, scaling_factor=stable_scale)
 
     # Important as the same name of the temp file is re-used twice
 

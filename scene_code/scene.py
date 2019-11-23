@@ -21,7 +21,6 @@ class Scene:
         for i in range(num_steps): 
             self.apply_torques()
             self.sim.p.stepSimulation()
-            if self.debug: time.sleep(5*self.step_to_sec)
         return
 
     def apply_torques(self):
