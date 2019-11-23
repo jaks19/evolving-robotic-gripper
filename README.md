@@ -37,11 +37,13 @@ Note 4) That some meshes (rarely) just cannot be calibrated for our experiments,
 ### To get an idea about how our grasping routine works, you could visualize a few grasps
 ```python main_routine.py --obj_path [path to an object mesh] --calibrate True --debug True --angles 20 170 330```
 
-Essentially this command runs an example grasp on a chosen object and you can view it using debug=True and you can choose which angles to grasp the object at.
+Essentially this command runs an example grasp on a chosen object and you can view it using --debug True and you can choose which angles to grasp the object at.
 
-Note 1) that actually for visualizing the grasp routine, you could use raw meshes and simply use the calibrate=True option above to calibrate them on the fly. But to run batch experiments eventually, you should perform the step before this one.
+Note 1) that actually for visualizing the grasp routine, you could use raw meshes and simply use the --calibrate True option above to calibrate them on the fly. But to run batch experiments eventually, you should perform the step before this one.
 
 2) It will print "({20.0: 1, 170.0: 1, 330.0: 1}, {20.0: 1, 170.0: 0, 330.0: 0})" which is how successful each grasp was at each angle) and here it is doing two prints per angle *because we shake objects after we grasp them and raise them* so there is a *score before and after shaking*.
+
+3) For NO curation or NO debugging, do not even include their flags above. --Debug False or --Curate False does not work.
 
 ### IMPORTANT! Never re-curate an already-curated mesh as it corrupts it, which is why we have distinct folders for raw and curated meshes. If a mesh already exists in dst_folder, and you run another curation and a mesh of the same name is being curated, it will overwrite the existing curated one!
 
