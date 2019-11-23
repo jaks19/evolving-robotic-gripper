@@ -18,14 +18,24 @@ We find that:
 * restricting our evaluation set of objects to a specific type (e.g. bottles or cones or adversarial objects...) reflects on the salient visual features of the emergent gripper finger morphologies
 
 ## Example commands for how to use the code:
-*Note*: We have the commands in order below and reading them in order will give you a good idea on how to use the code to process meshes and then train on them.
+*Note*: We have the commands in below in a specific order such that reading them in that order tells the story of how to use our code and how different modules interact.
 
-##### python main_curate_from_dirs.py --src_folder [path to uncurated raw meshes] --dst_folder [path to destination folder] --debug True
+### First any mesh needs to be processed
+```python main_curate_from_dirs.py --src_folder [path to uncurated raw meshes] --dst_folder [path to destination folder] --debug True```
 
-Note that --dst_folder must exist already. We do not create it to avoid overwriting files inadvertently.
+Note 1) that --dst_folder must exist already. We do not create it to avoid overwriting files inadvertently.
+Note 2) that curation creates a TODO TODO DB FILE
 
-##### python main_routine.py --obj_path [path to an object mesh] --calibrate True --debug True --angles 20 170 330
+Need to alter object meshes' positions and orientations so they appear right on the center of our table and are ready for grasping. This is important because we use a top-view segmentation of the objects to know where to grasp (and you could write your own grasping rules if you want using the segmentation output which includes the object width along every line passing through its center.)
 
-##### python main_ES.py --objects_folder [path to CURATED meshes] --num_cores 51 --npop 50 --log_dir [path to log folder for checkpts]
+### To get an idea about how our grasping routine works, you could visualize a few grasps
+```python main_routine.py --obj_path [path to an object mesh] --calibrate True --debug True --angles 20 170 330```
 
-##### python main_GEN.py --train_folder [folder with CURATED meshes to train on] --test_folders [folder with CURATED meshes to test on] --log_dir [path to log dir]
+Note that actually for visualizing the grasp routine, you could use raw meshes and simply use the calibrate=True option above to calibrate them on the fly. But to run batch experiments eventually, you should perform the step before this one.
+
+Essentially this command runs an example grasp on a chosen object and you can view it using debug=True and you can choose which angles to grasp the object at.
+
+### Running augmented random search on the gripper finger meshes morphologies' with evaluation on some chosen dataset as metric for how good morphologies are performing
+```python main_ES.py --objects_folder [path to CURATED meshes] --num_cores 51 --npop 50 --log_dir [path to log folder for checkpts]```
+
+Here you need curated/processed meshes for the training to run. Essentially this command evaluates your initial gripper on the folder of objects you chose for objects_folder and proposes random modifications to the finger 3D meshes and keep iterating, converging on the best morphology of fingers for this dataset.
