@@ -20,7 +20,7 @@ We find that:
 ## Example commands for how to use the code:
 *Note*: We have the commands in below in a specific order such that reading them in that order tells the story of how to use our code and how different modules interact.
 
-### First any mesh needs to be processed
+### Command 1 of 3: First any mesh needs to be processed
 Need to alter object meshes' positions and orientations so they appear right on the center of our table and are ready for grasping. This is important because we use a top-view segmentation of the objects to know where to grasp.
 
 ```python main_curate_from_dirs.py --src_folder [path to uncurated raw meshes] --dst_folder [path to destination folder] --debug True```
@@ -34,20 +34,24 @@ Note 3) that the info folder in the root project folder should always be there. 
 Note 4) That some meshes (rarely) just cannot be calibrated for our experiments, when perhaps they have a faulty design etc and these will not be saved in --dst_folder. At the end of curation of a whole folder, you will see printed: "n succeeded! k failed!" if your --src_folder size was n+k.
 
 
-### To get an idea about how our grasping routine works, you could visualize a few grasps
+### Command 2 of 3: To get an idea about how our grasping routine works, you could visualize a few grasps
 ```python main_routine.py --obj_path [path to an object mesh] --calibrate True --debug True --angles 20 170 330```
 
 Essentially this command runs an example grasp on a chosen object and you can view it using --debug True and you can choose which angles to grasp the object at.
 
-Note 1) that actually for visualizing the grasp routine, you could use raw meshes and simply use the --calibrate True option above to calibrate them on the fly. But to run batch experiments eventually, you should perform the step before this one.
+Note 
+
+1) that actually for visualizing the grasp routine, you could use raw meshes and simply use the --calibrate True option above to calibrate them on the fly. But to run batch experiments eventually, you should perform the step before this one.
 
 2) It will print "({20.0: 1, 170.0: 1, 330.0: 1}, {20.0: 1, 170.0: 0, 330.0: 0})" which is how successful each grasp was at each angle) and here it is doing two prints per angle *because we shake objects after we grasp them and raise them* so there is a *score before and after shaking*.
 
 3) For NO curation or NO debugging, do not even include their flags above. --Debug False or --Curate False does not work.
 
-### IMPORTANT! Never re-curate an already-curated mesh as it corrupts it, which is why we have distinct folders for raw and curated meshes. If a mesh already exists in dst_folder, and you run another curation and a mesh of the same name is being curated, it will overwrite the existing curated one!
+#### IMPORTANT! Never re-curate an already-curated mesh as it corrupts it, which is why we have distinct folders for raw and curated meshes. 
 
-### Running augmented random search on the gripper finger meshes morphologies' with evaluation on some chosen dataset as metric for how good morphologies are performing
+#### IMPORTANT! If a mesh already exists in dst_folder, and you run another curation and a mesh of the same name is being curated, it will overwrite the existing curated one!
+
+### Command 3 of 3: Running augmented random search on the gripper finger meshes morphologies' with evaluation on some chosen dataset as metric for how good morphologies are performing
 
 You are essentially ready to carry out morphology optimization of the gripper finger meshes. Here you need curated/processed meshes for the training to run.
 
