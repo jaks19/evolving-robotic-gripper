@@ -29,7 +29,7 @@ Note 1) that --dst_folder must exist already. We do not create it to avoid overw
 
 Note 2) that curation will create a curated replica of each object mesh into the --dst_folder
 
-Note 3) that the info folder in the root project folder should always be there. When you first curate an object, a database will be created and everytime you curate some mesh, its name and its stable point of contact, stable orientation etc (found during calibration) will be written to this database file. When you carry out experiments, every time an object is loaded, info from this database is used so that the objetc appears stably in the center of the table.
+Note 3) that the info folder in the root project folder should always be there. When you first curate an object, a database will be created and everytime you curate some mesh, its name and its stable point of contact, stable orientation etc (found during calibration) will be written to this database file. When you carry out experiments, every time an object is loaded, info from this database is used so that the object appears stably in the center of the table.
 
 Note 4) That some meshes (rarely) just cannot be calibrated for our experiments, when perhaps they have a faulty design etc and these will not be saved in --dst_folder. At the end of curation of a whole folder, you will see printed: "n succeeded! k failed!" if your --src_folder size was n+k.
 
