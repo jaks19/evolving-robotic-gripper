@@ -7,6 +7,7 @@ In this work we use our own WSG-32 parallel-jaw gripper simulation which we [ope
 ![GUI wrapper preview](https://github.com/jaks19/evolving-robotic-gripper/blob/master/gifs/gif_optimizing.png)
 
 *Note*: Anyone using this repo simply has to collect a few .obj meshes of objects on which they would like their gripper to perform well. We provide a few meshes in raw_meshes folder to start.
+Some other sources are: [princeton ModelNet dataset](https://modelnet.cs.princeton.edu/) and [DexNet dataset](https://berkeley.app.box.com/s/6mnb2bzi5zfa7qpwyn7uq5atb7vbztng_) from Berkeley.
 
 We search the space of gripper morphologies using augmented random search, and propose changes to the base morphology at each iteration by: randomly adding noise to the 3D finger mesh coordinates. 
 
