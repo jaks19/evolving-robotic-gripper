@@ -2,9 +2,9 @@
 
 In this work we use our own WSG-32 parallel-jaw gripper simulation which we [open-sourced](https://github.com/jaks19/parallel_gripper_simulation_pybullet), and collect a dataset of objects from distinct categories (e.g. bottles or cones or adversarial objects...)  on which we would like our *optimized gripper morphologies* (see second animation) to have better grasp success than the out-of-the-box WSG-32 gripper configuration.
 
-![GUI wrapper preview](https://github.com/jaks19/evolving-robotic-gripper/blob/master/gifs/gif_sim.png)
+![GUI wrapper preview](https://github.com/jaks19/evolving-robotic-gripper/blob/master/gifs/gif_sim.gif)
 
-![GUI wrapper preview](https://github.com/jaks19/evolving-robotic-gripper/blob/master/gifs/gif_optimizing.png)
+![GUI wrapper preview](https://github.com/jaks19/evolving-robotic-gripper/blob/master/gifs/gif_optimizing.gif)
 
 *Note*: Anyone using this repo simply has to collect a few .obj meshes of objects on which they would like their gripper to perform well. We provide a few meshes in raw_meshes folder to start.
 Some other sources are: [princeton ModelNet dataset](https://modelnet.cs.princeton.edu/) and [DexNet dataset](https://berkeley.app.box.com/s/6mnb2bzi5zfa7qpwyn7uq5atb7vbztng_) from Berkeley.
