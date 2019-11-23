@@ -49,7 +49,8 @@ Note 1) that actually for visualizing the grasp routine, you could use raw meshe
 
 You are essentially ready to carry out morphology optimization of the gripper finger meshes. Here you need curated/processed meshes for the training to run.
 
-```python main_ES.py 
+```
+python main_ES.py 
 --train_folder [path to CURATED meshes] 
 --num_cores 51 
 --npop 50 
