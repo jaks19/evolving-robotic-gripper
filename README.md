@@ -43,7 +43,7 @@ Note 1) that actually for visualizing the grasp routine, you could use raw meshe
 
 2) It will print "({20.0: 1, 170.0: 1, 330.0: 1}, {20.0: 1, 170.0: 0, 330.0: 0})" which is how successful each grasp was at each angle) and here it is doing two prints per angle *because we shake objects after we grasp them and raise them* so there is a *score before and after shaking*.
 
-## IMPORTANT! Never re-curate an already-curated mesh as it corrupts it, which is why we have distinct folders for raw and curated meshes. If a mesh already exists in dst_folder, and you run another curation and a mesh of the same name is being curated, it will overwrite the existing curated one!
+### IMPORTANT! Never re-curate an already-curated mesh as it corrupts it, which is why we have distinct folders for raw and curated meshes. If a mesh already exists in dst_folder, and you run another curation and a mesh of the same name is being curated, it will overwrite the existing curated one!
 
 ### Running augmented random search on the gripper finger meshes morphologies' with evaluation on some chosen dataset as metric for how good morphologies are performing
 
